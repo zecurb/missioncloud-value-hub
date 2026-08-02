@@ -1,0 +1,34 @@
+# Environment
+.env
+.env.*
+!.env.example
+.direnv/
+.envrc
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+coverage.xml
+htmlcov/
+
+# Node
+node_modules/
+.next/
+out/
+npm-debug.log*
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+
+# Infrastructure
+*.tfstate
+*.tfstate.*
+
+# Local data
+.data/
