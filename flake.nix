@@ -20,8 +20,12 @@
             git
             gh
             gnumake
-            docker-compose
+            docker
             postgresql_17
+            postgresql_17.dev
+            postgresql_17.pg_config
+            pkg-config
+            gcc
             jq
           ];
 

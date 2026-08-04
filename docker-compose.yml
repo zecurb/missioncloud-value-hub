@@ -20,7 +20,7 @@ services:
       context: ./services/api
     environment:
       APP_ENV: development
-      DATABASE_URL: postgresql://valuehub:valuehub@postgres:5432/valuehub
+      DATABASE_URL: postgresql+psycopg://valuehub:valuehub@postgres:5432/valuehub
       CORS_ORIGINS: http://localhost:3000
     ports:
       - "8000:8000"

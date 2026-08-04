@@ -1,7 +1,8 @@
 from functools import lru_cache
+from typing import Annotated
 
 from pydantic import field_validator
-from pydantic_settings import BaseSettings, SettingsConfigDict
+from pydantic_settings import BaseSettings, NoDecode, SettingsConfigDict
 
 
 class Settings(BaseSettings):
@@ -10,10 +11,11 @@ class Settings(BaseSettings):
     app_name: str = "MissionCloud Value Hub API"
     app_env: str = "development"
     api_prefix: str = "/api/v1"
-    cors_origins: list[str] = ["http://localhost:3000"]
+    database_url: str = "postgresql+psycopg://valuehub:valuehub@localhost:5432/valuehub"
+    cors_origins: Annotated[list[str], NoDecode] = ["http://localhost:3000"]
 
     model_config = SettingsConfigDict(
-        env_file=".env",
+        env_file=("../../.env", ".env"),
         env_file_encoding="utf-8",
         extra="ignore",
     )
