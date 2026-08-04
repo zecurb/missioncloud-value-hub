@@ -40,8 +40,7 @@ def get_demo_opportunities() -> list[OptimizationOpportunity]:
             risk="low",
             status=OpportunityStatus.APPROVED,
             rationale=(
-                "Thirty-day CPU and memory utilization remain below "
-                "the selected SKU baseline."
+                "Thirty-day CPU and memory utilization remain below the selected SKU baseline."
             ),
         ),
         OptimizationOpportunity(
@@ -57,8 +56,7 @@ def get_demo_opportunities() -> list[OptimizationOpportunity]:
             risk="medium",
             status=OpportunityStatus.VALIDATING,
             rationale=(
-                "Stable twelve-month baseline supports a one-year "
-                "commitment after growth review."
+                "Stable twelve-month baseline supports a one-year commitment after growth review."
             ),
         ),
         OptimizationOpportunity(

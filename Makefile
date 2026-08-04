@@ -1,6 +1,6 @@
 SHELL := /usr/bin/env bash
 
-.PHONY: help api-install web-install api-dev web-dev test lint typecheck format docker-up docker-down
+.PHONY: help api-install web-install api-dev web-dev test lint typecheck format db-up db-down db-revision db-upgrade db-downgrade db-seed docker-up docker-down
 
 help:
 	@printf '%s\n' \
@@ -12,6 +12,12 @@ help:
 	  'make lint          Run Python and web lint checks' \
 	  'make typecheck     Run Python and TypeScript type checks' \
 	  'make format        Format Python code' \
+	  'make db-up         Start the PostgreSQL container' \
+	  'make db-down       Stop local containers' \
+	  'make db-revision   Generate migration with m="message"' \
+	  'make db-upgrade    Apply all database migrations' \
+	  'make db-downgrade  Revert the latest migration' \
+	  'make db-seed       Seed the demonstration tenant' \
 	  'make docker-up     Start local containers' \
 	  'make docker-down   Stop local containers'
 
@@ -40,6 +46,26 @@ typecheck:
 
 format:
 	cd services/api && ruff format .
+
+
+db-up:
+	docker compose up -d postgres
+
+db-down:
+	docker compose down
+
+db-revision:
+	@test -n "$(m)" || (echo 'Usage: make db-revision m="migration message"' && exit 1)
+	cd services/api && uv run alembic revision --autogenerate -m "$(m)"
+
+db-upgrade:
+	cd services/api && uv run alembic upgrade head
+
+db-downgrade:
+	cd services/api && uv run alembic downgrade -1
+
+db-seed:
+	cd services/api && uv run python -m missioncloud_value_hub.db.seed
 
 docker-up:
 	docker compose up --build

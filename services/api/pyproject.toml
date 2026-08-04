@@ -5,8 +5,11 @@ description = "API for the MissionCloud Value Hub FinOps platform"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+  "alembic>=1.14,<2.0",
   "fastapi[standard-no-fastapi-cloud-cli]>=0.128,<1.0",
+  "psycopg[c]>=3.2,<4.0",
   "pydantic-settings>=2.7,<3.0",
+  "sqlalchemy>=2.0,<3.0",
 ]
 
 [dependency-groups]
@@ -41,3 +44,6 @@ select = ["E", "F", "I", "UP", "B", "SIM", "RUF"]
 python_version = "3.12"
 strict = true
 packages = ["missioncloud_value_hub"]
+
+[tool.ruff.lint.per-file-ignores]
+"migrations/versions/*.py" = ["E501"]
