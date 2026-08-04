@@ -1,6 +1,6 @@
 SHELL := /usr/bin/env bash
 
-.PHONY: help api-install web-install api-dev web-dev test lint typecheck format db-up db-down db-revision db-upgrade db-downgrade db-seed docker-up docker-down
+.PHONY: help api-install web-install api-dev web-dev test lint typecheck format db-up db-down db-revision db-upgrade db-downgrade db-seed ingest-demo docker-up docker-down
 
 help:
 	@printf '%s\n' \
@@ -18,6 +18,7 @@ help:
 	  'make db-upgrade    Apply all database migrations' \
 	  'make db-downgrade  Revert the latest migration' \
 	  'make db-seed       Seed the demonstration tenant' \
+	  'make ingest-demo   Ingest the fictional Azure export' \
 	  'make docker-up     Start local containers' \
 	  'make docker-down   Stop local containers'
 
@@ -66,6 +67,9 @@ db-downgrade:
 
 db-seed:
 	cd services/api && uv run python -m missioncloud_value_hub.db.seed
+
+ingest-demo:
+	cd services/api && uv run python -m missioncloud_value_hub.ingestion tests/fixtures/azure_cost_export.csv ../../var/ingestion
 
 docker-up:
 	docker compose up --build
