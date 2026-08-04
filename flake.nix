@@ -29,6 +29,10 @@
             jq
           ];
 
+          LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath [
+            pkgs.stdenv.cc.cc.lib
+          ];
+
           shellHook = ''
             export UV_PYTHON=${pkgs.python313}/bin/python
             echo "MissionCloud Value Hub development shell"

@@ -1,0 +1,6 @@
+UsageDate,BillingAccountId,SubscriptionId,ResourceGroup,ResourceId,ServiceName,MeterCategory,ResourceLocation,BillingCurrencyCode,CostInBillingCurrency
+2026-07-01,BA-001,SUB-001,rg-apps,/subscriptions/SUB-001/resources/vm-1,Virtual Machines,Compute,eastus,USD,1.250000
+2026-07-01,BA-001,SUB-001,rg-apps,/subscriptions/SUB-001/resources/vm-2,Virtual Machines,Compute,eastus,USD,0.250000
+2026-07-01,BA-001,SUB-001,rg-data,/subscriptions/SUB-001/resources/storage-1,Storage,Storage,eastus,USD,2.500000
+2026-07-02,BA-001,SUB-001,rg-apps,/subscriptions/SUB-001/resources/vm-1,Virtual Machines,Compute,eastus,USD,0.750000
+2026-07-02,BA-001,SUB-001,rg-data,/subscriptions/SUB-001/resources/sql-1,Azure SQL Database,Databases,eastus2,USD,1.750000

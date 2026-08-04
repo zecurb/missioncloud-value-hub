@@ -6,8 +6,11 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
   "alembic>=1.14,<2.0",
+  "duckdb>=1.1,<2.0",
   "fastapi[standard-no-fastapi-cloud-cli]>=0.128,<1.0",
+  "polars>=1.0,<2.0",
   "psycopg[c]>=3.2,<4.0",
+  "pyarrow>=18.0,<26.0",
   "pydantic-settings>=2.7,<3.0",
   "sqlalchemy>=2.0,<3.0",
 ]
@@ -47,3 +50,7 @@ packages = ["missioncloud_value_hub"]
 
 [tool.ruff.lint.per-file-ignores]
 "migrations/versions/*.py" = ["E501"]
+
+[[tool.mypy.overrides]]
+module = ["pyarrow", "pyarrow.*"]
+ignore_missing_imports = true
